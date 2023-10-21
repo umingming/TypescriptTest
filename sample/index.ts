@@ -22,3 +22,27 @@ type project = {
     days : number,
     started : boolean
 }
+let person :(number | string) = 3;
+person = "유미" //가변적인 타입, union
+let people :(number | string)[] = [1, '2', 3];
+let obj :{a : string | number} = {a : 1234}
+let firstName :any; //모든 자료형 허용으로 타입실드 해제문법임. 쓰면 안 되겠지?
+let lastName :unknown; //any랑 같음. 근데 좀 더 안전함, 이유는 any 는 문자열 - 숫자해도 에러 안 나는데 이건 남.
+let age :string|number = 3
+age - 3; //kim이 들어가면 에러남.
+
+let user1 :string = "kim";
+let age1 :unknown = undefined; //:undefined|number
+let married :boolean = false;
+let 철수 :unknown[] = [user1, age1, married];
+let 학교 :{
+  score : (number | boolean)[],
+  teacher : string,
+  friend : (string | string[])  
+} = {
+    score: [100, 97, 84],
+    teacher: "Phil",
+    friend: "John"
+}
+학교.score[4] = false;
+학교.friend = ['Lee', 학교.teacher];
