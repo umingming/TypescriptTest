@@ -35,14 +35,14 @@ let user1 :string = "kim";
 let age1 :unknown = undefined; //:undefined|number
 let married :boolean = false;
 let 철수 :unknown[] = [user1, age1, married];
-let 학교 :{
-  score : (number | boolean)[],
-  teacher : string,
-  friend : (string | string[])  
+const 학교: {
+    score: number[] | boolean[];
+    teacher: string;
+    friend: string | string[];
 } = {
     score: [100, 97, 84],
     teacher: "Phil",
-    friend: "John"
-}
+    friend: "John",
+};
 학교.score[4] = false;
 학교.friend = ['Lee', 학교.teacher];
