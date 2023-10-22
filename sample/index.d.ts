@@ -80,3 +80,29 @@ type Employee = {
     email: string;
     isMinor: boolean;
 };
+declare let me: "유미" | "이유미";
+type Motion = "가위" | "바위" | "보";
+declare function checkMotion(motion: Motion): Motion[];
+declare var obj2: {
+    readonly name: "kim";
+};
+type Test = (x: string) => number;
+declare let test5: Test;
+type Plus = (a: number) => number;
+declare let memberInfo: {
+    name: string;
+    plusOne(a: number): number;
+    changeName(newName: string): void;
+};
+type Member = {
+    name: string;
+    age?: number;
+    plusOne: (x: number) => number;
+    changeName: (x: string) => void;
+};
+declare let memberInfo2: Member;
+type Cut = (text: string) => string;
+type ToNumber = (text: string) => number;
+declare const cutZero: Cut;
+declare const removeDash: ToNumber;
+declare function log3(text: string, cutZero: Cut, removeDash: ToNumber): void;

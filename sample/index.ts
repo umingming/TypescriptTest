@@ -177,8 +177,8 @@ me = "유미";
 
 type Motion = "가위" | "바위" | "보";
 function checkMotion(motion: Motion): Motion[] {
-    // return [motion]
-    return ["가위"]
+    return [motion]
+    // return ["가위"]
 }
 
 //literalType 해결책
@@ -230,3 +230,8 @@ const cutZero: Cut = (text) => {
 const removeDash: ToNumber = (text) => {
     return +text.replace(/-/g, "");
 }
+function log3(text: string, cutZero: Cut, removeDash: ToNumber): void {
+    const value = removeDash(cutZero(text));
+    console.log(value);
+}
+log3("010-1111-2222", cutZero, removeDash);

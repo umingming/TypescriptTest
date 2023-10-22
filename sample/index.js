@@ -109,3 +109,43 @@ var product = {
 };
 product.color = "주황";
 product.size = 30;
+var me;
+me = "유미";
+function checkMotion(motion) {
+    return [motion];
+}
+var obj2 = {
+    name: 'kim'
+};
+var test5 = function (x) {
+    return +x;
+};
+var memberInfo = {
+    name: "Kim",
+    plusOne: function (a) {
+        return a + 1;
+    },
+    changeName: function (newName) {
+        this.name = newName;
+    }
+};
+var memberInfo2 = {
+    name: "kim",
+    plusOne: function (num) {
+        return num + 1;
+    },
+    changeName: function (newName) {
+        this.name = newName;
+    }
+};
+var cutZero = function (text) {
+    return text.replace(/^0/, "");
+};
+var removeDash = function (text) {
+    return +text.replace(/-/g, "");
+};
+function log3(text, cutZero, removeDash) {
+    var value = removeDash(cutZero(text));
+    console.log(value);
+}
+log3("010-1111-2222", cutZero, removeDash);
