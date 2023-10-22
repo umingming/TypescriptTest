@@ -170,3 +170,63 @@ type Employee = {
     email: string,
     isMinor: boolean,
 }
+//literal type은 const의 업그레이드 버전
+let me: "유미" | "이유미";
+me = "유미";
+// me = "안뇽"
+
+type Motion = "가위" | "바위" | "보";
+function checkMotion(motion: Motion): Motion[] {
+    // return [motion]
+    return ["가위"]
+}
+
+//literalType 해결책
+var obj2 = {
+    name: 'kim'
+} as const
+
+
+//함수 타입 지정
+type Test = (x: string) => number;
+
+let test5: Test = function (x) {
+    return +x;
+}
+
+type Plus = (a: number) => number;
+let memberInfo = {
+    name: "Kim",
+    plusOne(a: number): number {
+        return a + 1
+    },
+    changeName(newName: string): void {
+        this.name = newName;
+    }
+}
+type Member = {
+    name: string,
+    age?: number,
+    plusOne: (x: number) => number,
+    changeName: (x: string) => void
+}
+//Member type 지정해서 사용
+let memberInfo2: Member = {
+    name: "kim",
+    plusOne(num) {
+        return num+ 1;
+    },
+    changeName(newName) {
+        this.name = newName;
+    }
+}
+
+type Cut = (text: string) => string;
+type ToNumber = (text: string) => number;
+
+const cutZero: Cut = (text) => {
+    return text.replace(/^0/, "");
+}
+const removeDash: ToNumber = (text) => {
+    return +text.replace(/-/g, "");
+}
