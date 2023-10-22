@@ -62,11 +62,18 @@ function log2(text?: string): void {
     console.log(text); 
 } 
 
+//narrowing; type이 확정되지 않았을 경우 밸리데이션
 function sum(x: number | string): void {
     if (typeof x === "number") { //narrowing 필요
         console.log(x + 3);
     }
     
+}
+//assertion; type 덮어쓰기
+function test3(x: number | string) {
+    let array: number[] = [];
+    array[0] = x as number; //무슨 타입이 들어올지 100% 확신할 때. 사용해야 함, 남이 코드 수정할 때 사용
+    //<number>x 와 같은데 태그랑 헷갈려서 안 씀
 }
 
 function sayHi(name?: string): void {
@@ -86,4 +93,27 @@ function isMarriageable(income: number, hasHome: boolean, charmValue: string): b
     const scoreCharm = charmValue === "상" ? 100 : 0;
     
     return scoreIncome + scoreHome + scoreCharm >= 600;
+}
+
+//narrowing; type이 확정되지 않았을 경우 밸리데이션
+
+function transformNumber(array: (string | number)[]): number[] {
+    return array.map(i => +i);
+}
+const numbers = transformNumber([1, "2"]);
+console.log(numbers);
+
+type Teacher = {
+    subject: string | string[],
+    [key: string]: string | string[]
+}
+function getSubject(teacher: Teacher): string {
+    const {subject} = teacher;
+    if (typeof subject === "string") {
+        return subject;
+    } else if (Array.isArray(subject) && subject.length) {
+        return subject[subject.length - 1];
+    } else {
+        return "";
+    }
 }
