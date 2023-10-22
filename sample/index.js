@@ -70,3 +70,42 @@ function transformNumber(array) {
 }
 var numbers = transformNumber([1, "2"]);
 console.log(numbers);
+function getSubject(teacher) {
+    var subject = teacher.subject;
+    if (typeof subject === "string") {
+        return subject;
+    }
+    else if (Array.isArray(subject) && subject.length) {
+        return subject[subject.length - 1];
+    }
+    else {
+        return "";
+    }
+}
+function getSubject2(_a) {
+    var subject = _a.subject;
+    if (typeof subject === "string") {
+        return subject;
+    }
+    else if (Array.isArray(subject) && subject.length) {
+        return subject[subject.length - 1];
+    }
+    else {
+        return "";
+    }
+}
+console.log(getSubject({ subject: ["math"] }));
+var myDog = {
+    name: "게터"
+};
+myDog.age = 3;
+var position = {
+    x: 30,
+    y: 3
+};
+var product = {
+    size: 30,
+    position: [3, 2]
+};
+product.color = "주황";
+product.size = 30;

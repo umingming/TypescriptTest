@@ -43,3 +43,40 @@ declare function getLength(x: number | string): number;
 declare function isMarriageable(income: number, hasHome: boolean, charmValue: string): boolean;
 declare function transformNumber(array: (string | number)[]): number[];
 declare const numbers: number[];
+type Teacher = {
+    subject: string | string[];
+    [key: string]: string | string[];
+};
+declare function getSubject(teacher: Teacher): string;
+declare function getSubject2({ subject }: {
+    subject?: string | string[];
+}): string;
+type Animal = {
+    readonly name: string;
+    age?: number;
+};
+declare const myDog: Animal;
+type Name = string;
+type Age = number;
+type Person = Name | Age;
+type PositionX = {
+    x: number;
+    y: number | string;
+};
+type PositionY = {
+    y: number | string;
+};
+type Position = PositionX & PositionY;
+declare const position: Position;
+type Product = {
+    color?: string;
+    size: number;
+    readonly position: number[];
+};
+declare let product: Product;
+type Employee = {
+    name: string;
+    phone: number;
+    email: string;
+    isMinor: boolean;
+};

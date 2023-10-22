@@ -117,3 +117,56 @@ function getSubject(teacher: Teacher): string {
         return "";
     }
 }
+function getSubject2({ subject }: { subject?: string | string[] }): string {
+    if (typeof subject === "string") {
+        return subject;
+    } else if (Array.isArray(subject) && subject.length) {
+        return subject[subject.length - 1];
+    } else {
+        return "";
+    }
+}
+console.log(getSubject({subject: ["math"]}));
+
+// type Animal = string | number | undefined;
+// const dog: Animal = "Dog"; //type 변수(alias)
+type Animal = { //파스칼 권장
+    readonly name: string, //읽기 전용으로 수정 불가능
+    age?: number
+}
+const myDog: Animal = {
+    name: "게터"
+}
+// myDog.name = "세터" //에러만 나는 거고 실제로 할당은 됨.
+myDog.age = 3; 
+
+//type 키워드 합칠 수 있음.
+type Name = string;
+type Age = number;
+type Person = Name | Age;
+type PositionX = { x: number, y: number | string };
+type PositionY = { y: number | string };
+type Position = PositionX & PositionY; //type 합치기 속성을 합쳐서 정의할 수 있음.
+const position: Position = {
+    x: 30,
+    y: 3 //재정의해서 합치는 그런 건 안 되는 듯. 중복된 속성 에러, type이 같으면 됨.
+}
+
+type Product = {
+    color?: string,
+    size: number,
+    readonly position: number[]
+}
+let product: Product = {
+    size: 30,
+    position: [3, 2]
+}
+product.color = "주황";
+product.size = 30;
+
+type Employee = {
+    name: string,
+    phone: number,
+    email: string,
+    isMinor: boolean,
+}
