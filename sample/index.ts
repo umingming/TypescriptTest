@@ -46,3 +46,44 @@ const 학교: {
 };
 학교.score[4] = false;
 학교.friend = ['Lee', 학교.teacher];
+
+function test(x: number): number {
+    return x * 2;
+}
+//void; output이 없을 때 리턴 안 할 때
+function log(text: string): void {
+    console.log(text);
+    
+}
+log("test");//인자 안 넣으면 에러 남.
+
+//?하거나 text: string | undefined 하거나
+function log2(text?: string): void {
+    console.log(text); 
+} 
+
+function sum(x: number | string): void {
+    if (typeof x === "number") { //narrowing 필요
+        console.log(x + 3);
+    }
+    
+}
+
+function sayHi(name?: string): void {
+    const text = name ? `안녕하세요 ${name}` : "이름이 없습니다.";
+    console.log(text);
+}
+sayHi();
+
+function getLength(x: number | string): number {
+    const value = `${x}`;
+    return value.length; //x.toString().length
+}
+
+function isMarriageable(income: number, hasHome: boolean, charmValue: string): boolean {
+    const scoreIncome = income * 1;
+    const scoreHome = hasHome ? 500 : 0;
+    const scoreCharm = charmValue === "상" ? 100 : 0;
+    
+    return scoreIncome + scoreHome + scoreCharm >= 600;
+}
