@@ -30,3 +30,10 @@ const teachers = data.filter(({ subject }) => isSubject(subject));
 
 console.log(isSubject("수학"));
 console.log(isSubject("과학"));
+
+let num: unknown = 30;
+// console.log(num + 100);
+
+if (typeof num === "number") {
+  console.log(num + 100);
+}
