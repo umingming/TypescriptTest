@@ -44,6 +44,45 @@ class Game {
 //   age: number;
 // }
 
-interface User<Age extends number> {
-  age: Age;
+// interface User<Age extends number> {
+//   age: Age;
+// }
+
+interface MyMap<K, V> {
+  get(key: K): V;
+  set(key: K, value: V): void;
 }
+
+type ClassConstructor<T> = new (...args: any[]) => T;
+
+function withEZDebug<
+  C extends ClassConstructor<{
+    getDebugValue(): object;
+  }>
+>(Class: C) {
+  return class extends Class {
+    constructor(...args: any[]) {
+      super(...args);
+    }
+    debug() {
+      const { name } = this.constructor;
+      const value = this.getDebugValue();
+      return this.constructor.name + `${name}(${JSON.stringify(value)})`;
+    }
+  };
+}
+
+class HardToDebugUser {
+  constructor(
+    private id: number,
+    private firstName: string,
+    private lastName: string
+  ) {}
+  getDebugValue() {
+    return { id: this.id, name: `${this.firstName} ${this.lastName}` };
+  }
+}
+
+let User = withEZDebug(HardToDebugUser);
+let user = new User(3, "유미", "이");
+console.log(user.debug());
