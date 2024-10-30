@@ -67,7 +67,7 @@ function withEZDebug<
     debug() {
       const { name } = this.constructor;
       const value = this.getDebugValue();
-      return this.constructor.name + `${name}(${JSON.stringify(value)})`;
+      return `${name}(${JSON.stringify(value)})`;
     }
   };
 }
