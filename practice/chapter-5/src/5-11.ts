@@ -63,3 +63,28 @@ let Shoe = {
 };
 
 const boot = Shoe.create("boot");
+
+/*
+  빌더
+*/
+
+class RequestBuilder {
+  private url: string | null = null;
+  private data: object | null = null;
+  private method: "get" | "post" | null = null;
+
+  setURL(url: string): this {
+    this.url = url;
+    return this;
+  }
+
+  setData(data: object): this {
+    this.data = data;
+    return this;
+  }
+
+  setMethod(method: "get" | "post"): this {
+    this.method = method;
+    return this;
+  }
+}
