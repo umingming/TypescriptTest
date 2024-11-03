@@ -88,3 +88,17 @@ class RequestBuilder {
     return this;
   }
 }
+
+const colorObj = { red: "빨강", blue: "파랑", yello: "노랑" };
+
+type Color = "red" | "blue";
+
+const colors: Record<Color, string> = (Object.keys(colorObj) as Color[]).reduce(
+  (acc, cur) => {
+    acc[cur] = `color-${cur}`;
+    return acc;
+  },
+  {} as Record<Color, string>
+);
+
+console.log(colors);
