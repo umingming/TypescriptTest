@@ -102,3 +102,17 @@ const colors: Record<Color, string> = (Object.keys(colorObj) as Color[]).reduce(
 );
 
 console.log(colors);
+
+type UserTextEvent = { value: string; target: HTMLInputElement };
+type UserMouseEvent = { value: [number, number]; target: HTMLElement };
+type UserEvent = UserTextEvent | UserMouseEvent;
+
+function handleEvent(event: UserEvent) {
+  if (typeof event.value === "string") {
+    event.value;
+    event.target;
+    return;
+  }
+  event.value;
+  event.target;
+}
